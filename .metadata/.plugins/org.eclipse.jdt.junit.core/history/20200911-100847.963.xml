@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="New_configuration" project="test" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="TestSelenium.test.test3" time="47.576" displayname="test3" uniqueid="[engine:junit-jupiter]/[class:TestSelenium.test.test3]">
+    <testcase name="orangeHrmTest" classname="TestSelenium.test.test3" time="47.576" displayname="orangeHrmTest()" uniqueid="[engine:junit-jupiter]/[class:TestSelenium.test.test3]/[method:orangeHrmTest()]"/>
+  </testsuite>
+</testrun>

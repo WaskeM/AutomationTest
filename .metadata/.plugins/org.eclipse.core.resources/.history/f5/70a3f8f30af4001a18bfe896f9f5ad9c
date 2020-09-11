@@ -1,0 +1,26 @@
+package TestSelenium.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+public class GoogleCheese {
+	
+	public static void searchGoogle(WebDriver driver, String word){
+		
+		driver.findElement(By.name("q")).sendKeys(word, Keys.ENTER);
+	}
+
+	public static String getResult(WebDriver driver) {
+		
+		String searchResult = driver.findElement(By.id("result-stats")).getText();
+	    
+	    String segments[] = searchResult.split(" ");
+	    
+	    String numberOfSearch = segments[1];
+
+	    System.out.println(numberOfSearch);
+	    
+	    return numberOfSearch;
+	}
+}

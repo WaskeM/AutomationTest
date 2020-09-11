@@ -1,0 +1,23 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class GoogleSearchTest {
+
+	@Test
+	void test() {
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    driver.get("http://www.google.com");
+		System.out.println("blablabla");
+	}
+	
+	
+
+}

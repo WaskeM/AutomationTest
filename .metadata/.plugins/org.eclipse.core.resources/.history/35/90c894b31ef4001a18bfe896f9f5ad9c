@@ -1,0 +1,74 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+class test1 {
+
+	@Test
+	public void testDemoQa() throws InterruptedException {
+	    
+		WebDriver driver = TypeOfBrowser.chooseBrowser();   
+	    JavascriptExecutor je = (JavascriptExecutor) driver;
+	    Thread.sleep(2000);
+	    
+	    
+	    GoogleCheese.searchGoogle(driver, "demoqa.com");
+	    //driver.findElement(By.name("q")).sendKeys("demoqa.com", Keys.ENTER);
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//h3[contains(text(),'Demo QA')]")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//div[5]//div[1]//div[1]")).click();
+	    Thread.sleep(1000);
+	    
+	    je.executeScript("window.scrollBy(0, 450)", "");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.xpath("//span[contains(text(),'Droppable')]")).click();
+	    Thread.sleep(2000);
+	    
+	    Actions action = new Actions(driver);
+	    WebElement from = driver.findElement(By.id("draggable"));
+	    WebElement to = driver.findElement(By.xpath("//body/div/div/div/div/div/div/div/div[1]/div[1]/div[2]"));
+
+	    action.dragAndDrop(from,to).build().perform();
+	    
+	    ScreenShoot.captureScreenshoot(driver, "screenshot1");
+	    
+	    String textBox = to.getText();
+	    System.out.println(textBox);
+	    Thread.sleep(2000);
+
+	    driver.findElement(By.xpath("//body/div[@id='app']/div[contains(@class,'body-height')]"
+	    		+ "/div[contains(@class,'container playgound-body')]"
+	    		+ "/div[contains(@class,'row')]/div[contains(@class,'col-md-3')]"
+	    		+ "/div[contains(@class,'left-pannel')]/div[contains(@class,'accordion')]"
+	    		+ "/div[4]/span[1]/div[1]")).click();
+	    Thread.sleep(2000);
+	    
+	    je.executeScript("window.scrollBy(0, 450)", "");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.xpath("//span[contains(text(),'Tool Tips')]")).click();
+	    Thread.sleep(2000);
+	  
+	    WebElement mouseElement = driver.findElement(By.id("toolTipTextField"));
+	    action.moveToElement(mouseElement).build().perform();
+	    Thread.sleep(1000);
+	    
+	    String popText = driver.findElement(By.xpath("//div[@class='tooltip-inner']")).getText();
+
+	    
+	    System.out.println(popText);
+	    assertEquals("You hovered over the text field", popText);
+	}
+
+}

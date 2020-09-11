@@ -1,0 +1,59 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Scanner;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+class test1 {
+	
+	@BeforeAll
+	public static void choseBrowser() {
+	
+		WebDriver driver = null;
+		
+		int numBrowser = 0;
+		
+		Scanner typeOfBrowser = new Scanner(System.in);
+		System.out.println("Which browser you want to use ?");
+		System.out.println("Chrome = 1");
+		System.out.println("Mozilla Firefox = 2");
+		System.out.println("Internet Explorer = 3");
+
+		numBrowser = typeOfBrowser.nextInt();
+
+		if (numBrowser == 1) {
+			
+			System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
+			driver = new ChromeDriver();
+			
+		} else if (numBrowser == 2) {
+			
+			System.setProperty("webdriver.gecko.driver", ".\\drivers\\geckodriver.exe");
+			driver = new FirefoxDriver();
+			
+		} else if (numBrowser == 3) {
+			
+				System.setProperty("webdriver.ie.driver", ".\\drivers\\IEDriverServer.exe");
+				driver = new InternetExplorerDriver();
+				driver.get("https://www.google.com/");
+				
+		}
+		
+		driver.manage().window().maximize();
+		driver.get("https://www.google.com/");
+
+	}
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,19 @@
+package TestSelenium.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class OrangeHRM {
+	
+	
+	public static void setFirstName(WebDriver driver, String name) {
+		
+		driver.findElement(By.id("addCandidate_firstName")).sendKeys(name);
+	}
+	
+	public static void setLastName(WebDriver driver, String name) {
+		
+		driver.findElement(By.id("addCandidate_lastName")).sendKeys(name);
+	}
+	
+}

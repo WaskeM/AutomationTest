@@ -1,0 +1,166 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+class GoogleSearchTest {
+	
+	WebDriver driver;	
+	WebElement webElement;
+	JavascriptExecutor je = (JavascriptExecutor) driver;
+	
+	
+	
+	@Test
+	public void test1() throws InterruptedException {
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    JavascriptExecutor je = (JavascriptExecutor) driver;
+	    
+	    driver.get("http://www.google.com");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.name("q")).sendKeys("demoqa.com");
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.id("gsr")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//h3[contains(text(),'Demo QA')]")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//div[5]//div[1]//div[1]")).click();
+	    Thread.sleep(1000);
+	    je.executeScript("window.scrollBy(0, 450)", "");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.xpath("//span[contains(text(),'Droppable')]")).click();
+	    Thread.sleep(2000);
+	    
+	    Actions action = new Actions(driver);
+	    WebElement from = driver.findElement(By.id("draggable"));
+	    WebElement to = driver.findElement(By.xpath
+	    		("//body/div/div/div/div/div/div/div/div[1]/div[1]/div[2]"));
+
+	    action.dragAndDrop(from,to).build().perform();
+	    
+	    screenShoot.captureScreenshoot(driver, "screenshot1");
+	    
+	    String textBox = to.getText();
+	    System.out.println(textBox);
+	    Thread.sleep(2000);
+
+	    driver.findElement(By.xpath("//body/div[@id='app']/div[contains(@class,'body-height')]"
+	    		+ "/div[contains(@class,'container playgound-body')]"
+	    		+ "/div[contains(@class,'row')]/div[contains(@class,'col-md-3')]"
+	    		+ "/div[contains(@class,'left-pannel')]/div[contains(@class,'accordion')]"
+	    		+ "/div[4]/span[1]/div[1]")).click();
+	    Thread.sleep(2000);
+	    
+	    je.executeScript("window.scrollBy(0, 450)", "");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.xpath("//span[contains(text(),'Tool Tips')]")).click();
+	    Thread.sleep(2000);
+	  
+	    WebElement mouseElement = driver.findElement(By.id("toolTipTextField"));
+	    action.moveToElement(mouseElement).build().perform();
+	    Thread.sleep(1000);
+	    
+	    String popText = driver.findElement(By.xpath("//div[@class='tooltip-inner']")).getText();
+	    
+	    //div[@class="tooltip-inner"]
+	    //WebElement popUp = driver.findElement(By.className(""));
+	    //String popUpText = popUp.getText();
+	    
+	    System.out.println(popText);
+	    assertEquals("You hovered over the text field", popText);
+	}
+	
+	@Test
+	public void test2() throws InterruptedException {
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    
+	    driver.get("http://www.google.com");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.name("q")).sendKeys("cheese");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+	    Thread.sleep(2000);
+	    
+	    WebElement matchingResult= driver.findElement(By.xpath(".//div[@class='aajZCb']/ul"));
+	    List<WebElement> listResult= matchingResult.findElements(By.xpath("//li/div/div[@class='sbtc']"));
+	    System.out.println(listResult.size());
+	    
+	    assertEquals(listResult.size(), 777);
+
+	    
+	    //String resultSearch = driver.findElement(By.id("//div[@id='result-stats']")).getText().split(" ")[2];
+	    //System.out.println(resultSearch);
+	    
+	}
+	
+	@Test
+	public void test3() throws InterruptedException {
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    
+	    driver.get("https://orangehrm-demo-6x.orangehrmlive.com/");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.id("btnLogin")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//span[contains(text(),'Recruitment')]")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//span[@class='left-menu-title'][contains(text(),'Candidates')]")).click();
+	    Thread.sleep(5000);
+	   
+	    /*
+	    List <WebElement> numOfCandidates = driver.findElements(By.className("dataDefaultRaw dataRaw handCuser"));
+	    System.out.println("Number of candidates: " + numOfCandidates.size());
+	    Thread.sleep(2000);
+	    */
+	    
+	    driver.findElement(By.tagName("a")).click();
+	    driver.findElement(By.cssSelector("a button#addItemBtn"));
+	    driver.findElement(By.cssSelector("a button[id='addItemBtn']"));
+
+	    driver.findElement(By.name("add")).click();;
+	    Thread.sleep(2000);
+	    
+	    
+	    driver.findElement(By.xpath("//i[@class='large mdi-content-add material-icons']")).click();
+	    driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[7]/div[1]/div[1]/a[1]/i[1]")).click();
+	    driver.findElement(By.linkText("add")).click();
+
+	    Thread.sleep(1000);
+	    
+	    
+	}
+	
+
+}

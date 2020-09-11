@@ -1,0 +1,14 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class GoogleSearchTest {
+
+	@Test
+	void test() {
+		System.out.println("blablabla");
+	}
+
+}

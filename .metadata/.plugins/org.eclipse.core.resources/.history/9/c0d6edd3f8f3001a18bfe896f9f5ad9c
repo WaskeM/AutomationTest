@@ -1,0 +1,37 @@
+package TestSelenium.test;
+
+import java.util.Scanner;
+
+public class typeOfBrowser {
+	
+	protected static WebDriver driver = null;
+
+	public static void beforeSuite() {
+		int help = 0;
+		Scanner choose = new Scanner(System.in);
+		System.out.println("Which browser do you want to use: (Input your answer)");
+		System.out.println("Chrome = 1");
+		System.out.println("Internet Explorer = 2");
+		System.out.println("Mozilla Firefox = 3");
+
+		help = choose.nextInt();
+
+		if (help == 1) {
+			System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+			driver = new ChromeDriver();
+		} else if (help == 2) {
+			System.setProperty("webdriver.ie.driver", ".\\driver\\IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+		} else if (help == 3) {
+			/*System.setProperty("webdriver.edge.driver", ".\\driver\\MicrosoftWebDriver.exe");
+			driver = new EdgeDriver();*/
+			System.setProperty("webdriver.gecko.driver", ".\\driver\\geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.get("https://www.google.com/");
+		driver.manage().window().maximize();
+
+	}
+}

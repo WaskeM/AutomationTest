@@ -1,0 +1,36 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class test2 {
+
+	@Test
+	public void googleCheeseTest() throws InterruptedException {
+		TypeOfBrowser.chooseBrowser();
+		
+		WebDriver driver = 	TypeOfBrowser.chooseBrowser();
+
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    driver.get("http://www.google.com");
+	    
+	    Thread.sleep(2000);
+	    
+	    GoogleCheese.searchGoogle(driver, "cheese");
+	    
+	    Thread.sleep(2000);
+	    
+	    //GoogleCheese.getResult(driver);
+	 
+	    assertEquals(777,  GoogleCheese.getResult(driver), "There is to much cheese on the Internet");
+	  
+	}
+
+}

@@ -1,0 +1,42 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class GoogleSearchTest {
+	
+	WebDriver driver;
+	JavascriptExecutor je = driver;
+	
+	@Test
+	void test() throws InterruptedException {
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    driver.get("http://www.google.com");
+	    Thread.sleep(2000);
+	    driver.findElement(By.name("q")).sendKeys("demoqa.com");
+	    Thread.sleep(1000);
+	    driver.findElement(By.id("gsr")).click();
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("//h3[contains(text(),'Demo QA')]")).click();
+	    Thread.sleep(2000);
+	    driver.manage().window().
+	    driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[5]/div[1]/div[3]/h5[1]")).click();
+	    // driver.findElement(By.xpath("//h5[contains(text(),'Interactions')]")).click();
+	    Thread.sleep(2000);
+	   // driver.findElement(By.xpath("//span[contains(text(),'Droppable')]")).click();
+	    
+
+		System.out.println("blablabla");
+	}
+	
+	
+
+}

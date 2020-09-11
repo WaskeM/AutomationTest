@@ -1,0 +1,25 @@
+package TestSelenium.test;
+
+
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class screenShoot {
+	
+	public static void captureScreenshoot(WebDriver driver,String screenshootName) {
+		
+		try {
+			TakesScreenshot ss = (TakesScreenshot) driver;
+
+		}
+		catch(Exception e) {
+			
+		}
+		
+	}
+	
+	
+	
+}

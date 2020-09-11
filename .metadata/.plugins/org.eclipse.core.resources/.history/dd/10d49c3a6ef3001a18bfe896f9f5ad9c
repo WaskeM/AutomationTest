@@ -1,0 +1,32 @@
+package TestSelenium.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GoogleSearch {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver driver;
+		driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+		
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    
+	    
+	    driver.get("http://www.google.com");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.name("q")).sendKeys("demoqa.com");
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.id("gsr")).click();
+	    Thread.sleep(1000);
+	    je.executeScript("window.scrollBy(0, 250)", "");
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package TestSelenium.test;
+
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class screenShoot {
+	
+	WebDriver driver;	
+	WebElement webElement;
+	
+	TakesScreenshot takeScreenshot = (TakesScreenshot) driver;
+}

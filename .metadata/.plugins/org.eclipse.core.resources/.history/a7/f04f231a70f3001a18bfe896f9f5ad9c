@@ -1,0 +1,52 @@
+package TestSelenium.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class GoogleSearchTest {
+	
+	WebDriver driver;	
+	WebElement webElement;
+	JavascriptExecutor je = (JavascriptExecutor) driver;
+	
+	
+	@Test
+	void test1() throws InterruptedException {
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:/Users/vaske/Desktop/webDrivers/chromedriver.exe"); 
+	    driver= new ChromeDriver() ;
+	    driver.manage().window().maximize();
+	    JavascriptExecutor je = (JavascriptExecutor) driver;
+	    
+	    driver.get("http://www.google.com");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.name("q")).sendKeys("demoqa.com");
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.id("gsr")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//h3[contains(text(),'Demo QA')]")).click();
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//div[5]//div[1]//div[1]")).click();
+	    Thread.sleep(1000);
+	    je.executeScript("window.scrollBy(0, 450)", "");
+	    Thread.sleep(2000);
+	    
+	    driver.findElement(By.xpath("//span[contains(text(),'Droppable')]")).click();
+	    
+
+		System.out.println("blablabla");
+	}
+	
+	
+
+}

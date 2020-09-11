@@ -1,0 +1,18 @@
+package TestSelenium.test;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class CurrentDate {
+
+	//set current date
+	public static String currentDate() {
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String currentDate = dateFormat.format(date);
+		
+		return currentDate;
+	}
+}

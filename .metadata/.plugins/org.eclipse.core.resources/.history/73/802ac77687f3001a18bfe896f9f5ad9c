@@ -1,0 +1,17 @@
+package TestSelenium.test;
+
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class screenShoot {
+	
+	WebDriver driver = new ChromeDriver();;	
+	WebElement webElement;
+	
+	
+	TakesScreenshot ss = (TakesScreenshot) driver;
+	
+	
+}
